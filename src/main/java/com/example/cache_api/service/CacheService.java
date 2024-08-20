@@ -16,21 +16,34 @@ public class CacheService {
     }
 
     public void putData(String cacheName, CacheData data) {
-        redisTemplate.opsForValue().set(cacheName + ":" + data.getKey(),
-                data.getValue(), data.getTimeToLiveInMinute(), TimeUnit.MINUTES);
+        try {
+            String fullKey = cacheName + ":" + data.getKey();
+            redisTemplate.opsForValue().set(fullKey, data.getValue(), data.getTimeToLiveInMinute(), TimeUnit.MINUTES);//ttl
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("error in inserting data to cache!!!", e);
+        }
     }
 
     public String getData(String cacheName, String key) {
         try {
-            return redisTemplate.opsForValue().get(cacheName + ":" + key);
+            String fullKey = cacheName + ":" + key;
+            return redisTemplate.opsForValue().get(fullKey);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("خطا در دریافت داده از کش", e);
+            throw new RuntimeException("error in read data from cache!!!", e);
         }
     }
 
     public void deleteData(String cacheName, String key) {
-        redisTemplate.delete(cacheName + ":" + key);
+        try {
+            String fullKey = cacheName + ":" + key;
+            redisTemplate.delete(fullKey);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("error in delete!!!", e);
+        }
     }
 }
+
 
