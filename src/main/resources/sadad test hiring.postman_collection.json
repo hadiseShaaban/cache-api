@@ -27,26 +27,18 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/cache/get?cacheName=myCache&key=myKey",
+					"raw": "http://localhost:8080/cache-api/caches/myCache/entries/myDataKey",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"api",
-						"cache",
-						"get"
-					],
-					"query": [
-						{
-							"key": "cacheName",
-							"value": "myCache"
-						},
-						{
-							"key": "key",
-							"value": "myKey"
-						}
+						"cache-api",
+						"caches",
+						"myCache",
+						"entries",
+						"myDataKey"
 					]
 				},
 				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
@@ -75,7 +67,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"key\": \"myKey\",\n    \"value\": \"myValue\",\n    \"timeToLiveInMinute\": 10\n}",
+					"raw": "{\n  \"key\": \"myDataKey\",\n  \"value\": \"myDataValue\",\n  \"timeToLiveInMinute\": 3600\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -83,22 +75,17 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/cache/put?cacheName=myCache",
+					"raw": "http://localhost:8080/cache-api/caches/myCache/entries",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"api",
-						"cache",
-						"put"
-					],
-					"query": [
-						{
-							"key": "cacheName",
-							"value": "myCache"
-						}
+						"cache-api",
+						"caches",
+						"myCache",
+						"entries"
 					]
 				},
 				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
@@ -135,26 +122,18 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/cache/delete?cacheName=myCache&key=myKey",
+					"raw": "http://localhost:8080/cache-api/caches/myCache/entries/myDataKey",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"api",
-						"cache",
-						"delete"
-					],
-					"query": [
-						{
-							"key": "cacheName",
-							"value": "myCache"
-						},
-						{
-							"key": "key",
-							"value": "myKey"
-						}
+						"cache-api",
+						"caches",
+						"myCache",
+						"entries",
+						"myDataKey"
 					]
 				},
 				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."

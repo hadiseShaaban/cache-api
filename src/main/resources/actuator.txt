@@ -1,0 +1,8 @@
+http://localhost:8080/actuator/metrics/http.server.requests
+http://localhost:8080/actuator/metrics/http.server.requests?tag=uri:/cache-api/caches/myCache/entries
+http://localhost:8080/actuator/metrics/http.server.requests?tag=uri:/cache-api/caches/myCache/entries/myDataKey
+http://localhost:8080/actuator/metrics/http.server.requests?tag=uri:/cache-api/caches/myCache/entries&tag=method:POST
+http://localhost:8080/actuator/metrics/http.server.requests?tag=uri:/cache-api/caches
+http://localhost:8080/actuator/metrics/jvm.memory.used
+http://localhost:8080/actuator/metrics/jvm.gc.pause
+http://localhost:8080/actuator/metrics/jvm.threads.live

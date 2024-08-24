@@ -1,0 +1,14 @@
+package com.example.cache_api.controller.runners;
+
+import org.junit.runner.RunWith;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(features = "src/test/resources/features",
+        glue = "com.example.cache_api.controller.step_definitions",
+        plugin = {"pretty", "html:target/cucumber-reports.html"})
+
+public class CucumberTestRunner {
+}
+
